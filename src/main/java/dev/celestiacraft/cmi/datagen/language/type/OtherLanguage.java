@@ -84,7 +84,7 @@ public class OtherLanguage extends LanguageGenerate {
 		addRadialLang(
 				"open_ponder",
 				"Open Ponder",
-				"打开思索界面"
+				"打开思索索引"
 		);
 		addRadialLang(
 				"wrench",
