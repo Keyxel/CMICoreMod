@@ -8,7 +8,6 @@ import dev.celestiacraft.cmi.common.register.CmiItem;
 import dev.celestiacraft.cmi.utils.ModResources;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -21,7 +20,7 @@ import java.util.List;
 public class AddCreativeModeTabs {
 	private static final ResourceKey<CreativeModeTab> KUBEJS_TAB = ResourceKey.create(
 			Registries.CREATIVE_MODE_TAB,
-			ResourceLocation.parse("kubejs:tab")
+			ModResources.loadKubeJS("tab").getLocation()
 	);
 
 	private static final Item REDSTONE_MECHANISM = ModResources.RESSTONE_MODULE.getItem();
