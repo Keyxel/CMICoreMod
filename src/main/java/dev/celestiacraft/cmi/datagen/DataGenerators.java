@@ -1,13 +1,14 @@
 package dev.celestiacraft.cmi.datagen;
 
 import dev.celestiacraft.cmi.Cmi;
+import dev.celestiacraft.cmi.datagen.curios.CmiCuriosProvider;
 import dev.celestiacraft.cmi.datagen.language.LanguageGenerate;
 import dev.celestiacraft.cmi.datagen.language.locale.Chinese;
 import dev.celestiacraft.cmi.datagen.language.locale.English;
-import dev.celestiacraft.cmi.datagen.tags.ModBlockTagsProvider;
-import dev.celestiacraft.cmi.datagen.tags.ModFluidTagsProvider;
-import dev.celestiacraft.cmi.datagen.tags.ModItemTagsProvider;
-import dev.celestiacraft.cmi.datagen.worldgen.WorldGenProvider;
+import dev.celestiacraft.cmi.datagen.tags.CmiBlockTagsProvider;
+import dev.celestiacraft.cmi.datagen.tags.CmiFluidTagsProvider;
+import dev.celestiacraft.cmi.datagen.tags.CmiItemTagsProvider;
+import dev.celestiacraft.cmi.datagen.worldgen.CmiWorldGenProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -33,15 +34,16 @@ public class DataGenerators {
 		generator.addProvider(event.includeClient(), new Chinese(output));
 
 		// Server
-		ModBlockTagsProvider blockTags = new ModBlockTagsProvider(output, provider, helper);
-		ModItemTagsProvider itemTags = new ModItemTagsProvider(output, provider, blockTags, helper);
-		ModFluidTagsProvider fluidTags = new ModFluidTagsProvider(output, provider, helper);
-		WorldGenProvider worldGen = new WorldGenProvider(output, provider);
+		CmiBlockTagsProvider blockTags = new CmiBlockTagsProvider(output, provider, helper);
+		CmiItemTagsProvider itemTags = new CmiItemTagsProvider(output, provider, blockTags, helper);
+		CmiFluidTagsProvider fluidTags = new CmiFluidTagsProvider(output, provider, helper);
+		CmiWorldGenProvider worldGen = new CmiWorldGenProvider(output, provider);
+		CmiCuriosProvider curios = new CmiCuriosProvider(output, helper, provider);
 
 		generator.addProvider(event.includeServer(), blockTags);
 		generator.addProvider(event.includeServer(), itemTags);
 		generator.addProvider(event.includeServer(), fluidTags);
-
 		generator.addProvider(event.includeServer(), worldGen);
+		generator.addProvider(event.includeServer(), curios);
 	}
 }

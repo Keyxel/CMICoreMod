@@ -6,7 +6,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import dev.celestiacraft.cmi.datagen.worldgen.ModConfiguredFeatures;
+import dev.celestiacraft.cmi.datagen.worldgen.CmiConfiguredFeatures;
 
 public class GoldenTreeGrower extends AbstractTreeGrower {
 	public GoldenTreeGrower() {
@@ -15,6 +15,6 @@ public class GoldenTreeGrower extends AbstractTreeGrower {
 
 	@Override
 	protected @Nullable ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(@NotNull RandomSource random, boolean hasBees) {
-		return ModConfiguredFeatures.GOLDEN_TREE;
+		return CmiConfiguredFeatures.GOLDEN_TREE;
 	}
 }

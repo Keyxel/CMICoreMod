@@ -4,10 +4,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import dev.celestiacraft.cmi.Cmi;
 import dev.celestiacraft.cmi.api.client.textures.Items;
-import dev.celestiacraft.cmi.common.item.InitialItemKitItem;
-import dev.celestiacraft.cmi.common.item.MysticPomeloItem;
-import dev.celestiacraft.cmi.common.item.SimpleBatteryItem;
-import dev.celestiacraft.cmi.common.item.TestBrushItem;
+import dev.celestiacraft.cmi.common.item.*;
 import dev.celestiacraft.cmi.common.item.tool.crafting_table.HandheleCraftingTableItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 
@@ -18,9 +15,13 @@ public class CmiItem {
 	public static final ItemEntry<ForgeSpawnEggItem> QI_MONTH_EGG;
 	public static final ItemEntry<InitialItemKitItem> INITIAL_ITEM_KIT;
 	public static final ItemEntry<HandheleCraftingTableItem> HANDHELE_CRAFTING_TABLE;
+	public static final ItemEntry<NutritionSyringeItem> NUTRITION_SYRINGE;
 
 	static {
 		TEST_BRUSH = Cmi.REGISTRATE.item("test_brush", TestBrushItem::new)
+				.register();
+		NUTRITION_SYRINGE = Cmi.REGISTRATE.item("nutrition_syringe", NutritionSyringeItem::new)
+				.model(NonNullBiConsumer.noop())
 				.register();
 		MYSTIC_POMELO = Cmi.REGISTRATE.item("mystic_pomelo", MysticPomeloItem::new)
 				.model(Items.generated("item/mystic_pomelo"))

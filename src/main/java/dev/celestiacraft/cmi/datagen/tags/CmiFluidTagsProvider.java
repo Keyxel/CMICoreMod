@@ -9,8 +9,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModFluidTagsProvider extends FluidTagsProvider {
-	public ModFluidTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, ExistingFileHelper helper) {
+public class CmiFluidTagsProvider extends FluidTagsProvider {
+	public CmiFluidTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, ExistingFileHelper helper) {
 		super(output, provider, Cmi.MODID, helper);
 	}
 

@@ -15,8 +15,8 @@ import dev.celestiacraft.cmi.common.register.*;
 import dev.celestiacraft.cmi.compat.adastra.AdAstraOxygenCompat;
 import dev.celestiacraft.cmi.compat.create.CmiStress;
 import dev.celestiacraft.cmi.config.CommonConfig;
-import dev.celestiacraft.cmi.datagen.worldgen.region.ModOverworldRegion;
-import dev.celestiacraft.cmi.datagen.worldgen.surfacerule.ModSurfaceRuleData;
+import dev.celestiacraft.cmi.datagen.worldgen.region.CmiOverworldRegion;
+import dev.celestiacraft.cmi.datagen.worldgen.surfacerule.CmiSurfaceRuleData;
 import dev.celestiacraft.cmi.network.CmiNetwork;
 import net.createmod.catnip.lang.FontHelper;
 import net.createmod.ponder.foundation.PonderIndex;
@@ -107,10 +107,10 @@ public class Cmi {
 
 	private void onCommonSetup(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			Regions.register(new ModOverworldRegion(5));
+			Regions.register(new CmiOverworldRegion(5));
 
-			SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, Cmi.MODID, ModSurfaceRuleData.makeRules());
-			SurfaceRuleManager.addToDefaultSurfaceRulesAtStage(SurfaceRuleManager.RuleCategory.OVERWORLD, SurfaceRuleManager.RuleStage.AFTER_BEDROCK, 0, ModSurfaceRuleData.makeInjections());
+			SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, Cmi.MODID, CmiSurfaceRuleData.makeRules());
+			SurfaceRuleManager.addToDefaultSurfaceRulesAtStage(SurfaceRuleManager.RuleCategory.OVERWORLD, SurfaceRuleManager.RuleStage.AFTER_BEDROCK, 0, CmiSurfaceRuleData.makeInjections());
 			AdAstraOxygenCompat.register();
 		});
 	}

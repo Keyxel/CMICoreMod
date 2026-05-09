@@ -1,4 +1,4 @@
-package dev.celestiacraft.cmi.datagen.worldgen.biome;
+package dev.celestiacraft.cmi.common.register;
 
 import dev.celestiacraft.cmi.Cmi;
 import net.minecraft.core.registries.Registries;
@@ -10,7 +10,7 @@ import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.biome.*;
 
-public class ModBiomes {
+public class CmiBiome {
 	public static final ResourceKey<Biome> ANDESITE_CAVE = register("andesite_cave");
 
 	public static void bootstrap(BootstapContext<Biome> context) {

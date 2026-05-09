@@ -1,7 +1,7 @@
 package dev.celestiacraft.cmi.datagen.worldgen.surfacerule;
 
 import dev.celestiacraft.cmi.Cmi;
-import dev.celestiacraft.cmi.datagen.worldgen.biome.ModBiomes;
+import dev.celestiacraft.cmi.common.register.CmiBiome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -10,13 +10,13 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class ModSurfaceRuleData {
+public class CmiSurfaceRuleData {
 	private static final SurfaceRules.RuleSource ANDESITE = makeStateRule(Blocks.ANDESITE);
 	private static final SurfaceRules.RuleSource STONE = makeStateRule(Blocks.STONE);
 	private static final SurfaceRules.RuleSource PEAT = makeStateRule(ForgeRegistries.BLOCKS.getValue(Cmi.loadResource("peat_block")));
 
 	public static SurfaceRules.RuleSource makeRules() {
-		return SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.ANDESITE_CAVE), ANDESITE));
+		return SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(CmiBiome.ANDESITE_CAVE), ANDESITE));
 	}
 
 	public static SurfaceRules.RuleSource makeInjections() {

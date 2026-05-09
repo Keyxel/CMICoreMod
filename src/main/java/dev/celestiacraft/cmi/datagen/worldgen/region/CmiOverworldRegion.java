@@ -2,7 +2,7 @@ package dev.celestiacraft.cmi.datagen.worldgen.region;
 
 import com.mojang.datafixers.util.Pair;
 import dev.celestiacraft.cmi.Cmi;
-import dev.celestiacraft.cmi.datagen.worldgen.biome.ModBiomes;
+import dev.celestiacraft.cmi.common.register.CmiBiome;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
@@ -13,15 +13,15 @@ import terrablender.api.RegionType;
 
 import java.util.function.Consumer;
 
-public class ModOverworldRegion extends Region {
-	public ModOverworldRegion(int weight) {
+public class CmiOverworldRegion extends Region {
+	public CmiOverworldRegion(int weight) {
 		super(Cmi.loadResource("overworld"), RegionType.OVERWORLD, weight);
 	}
 
 	@Override
 	public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
 		this.addModifiedVanillaOverworldBiomes(mapper, (builder) -> {
-			builder.replaceBiome(Biomes.DRIPSTONE_CAVES, ModBiomes.ANDESITE_CAVE);
+			builder.replaceBiome(Biomes.DRIPSTONE_CAVES, CmiBiome.ANDESITE_CAVE);
 		});
 	}
 }

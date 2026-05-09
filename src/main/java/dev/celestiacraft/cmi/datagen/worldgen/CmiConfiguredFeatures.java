@@ -16,7 +16,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlac
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 
-public class ModConfiguredFeatures {
+public class CmiConfiguredFeatures {
 	public static ResourceKey<ConfiguredFeature<?, ?>> GOLDEN_TREE = registerKey("golden_tree");
 
 	private static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

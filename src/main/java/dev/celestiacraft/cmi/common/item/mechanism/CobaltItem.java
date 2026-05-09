@@ -5,6 +5,7 @@ import dev.celestiacraft.libs.compat.curios.CuriosContext;
 import dev.celestiacraft.libs.compat.curios.ICuriosHelper;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.player.Player;
 
 public class CobaltItem extends MechanismItem implements ICuriosHelper {
 	public CobaltItem(Properties properties) {
@@ -12,15 +13,17 @@ public class CobaltItem extends MechanismItem implements ICuriosHelper {
 	}
 
 	@Override
-	public void curiosTick(CuriosContext context) {
-		context.getPlayer().addEffect(new MobEffectInstance(
+	public void onCuriosTick(CuriosContext context) {
+		Player player = context.getPlayer();
+
+		player.addEffect(new MobEffectInstance(
 				MobEffects.MOVEMENT_SPEED,
 				20 * 20,
 				1,
 				false,
 				false
 		));
-		context.getPlayer().addEffect(new MobEffectInstance(
+		player.addEffect(new MobEffectInstance(
 				MobEffects.DIG_SPEED,
 				20 * 20,
 				1,

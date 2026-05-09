@@ -111,5 +111,10 @@ public class TooltipLanguage extends LanguageGenerate {
 				"Hold _Shift_ for details",
 				"按住 _Shift_ 查看列表"
 		);
+		addTooltipLang(
+				"nutrition_syringe",
+				"After the equipment let you never hunger",
+				"装备后让你永不饥饿"
+		);
 	}
 }
