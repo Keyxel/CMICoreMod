@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
-public class WaterWellBlockEntity extends MachineControllerBlockEntity{
+public class WaterWellBlockEntity extends MachineControllerBlockEntity {
 	public WaterWellBlockEntity(BlockEntityType<? extends WaterWellBlockEntity> type, BlockPos pos, BlockState state) {
 		super(type, pos, state, CmiMultiblock.WATER_PUMP);
 	}
