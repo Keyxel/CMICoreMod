@@ -23,6 +23,11 @@ public class ItemLanguage extends LanguageGenerate {
 				"Handheld Crafting Table",
 				"手持工作台"
 		);
+		addItemLanguage(
+				"nutrition_syringe",
+				"Nutrition Syringe",
+				"营养注射器"
+		);
 	}
 
 	private static @NotNull List<String> info(String id, String en, String zh) {
