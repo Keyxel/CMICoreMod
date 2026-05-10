@@ -20,11 +20,12 @@ public class StoneItem extends MechanismItem {
 
 	@Override
 	protected InteractionResult onMechanismUse(UseOnContext context) {
-		BlockPos blockPos = context.getClickedPos();
+		BlockPos pos = context.getClickedPos();
 		Level level = context.getLevel();
-		BlockState blockState = level.getBlockState(blockPos);
-		if (blockState == Blocks.COBBLESTONE.defaultBlockState()) {
-			level.setBlockAndUpdate(blockPos, Blocks.STONE.defaultBlockState());
+		BlockState state = level.getBlockState(pos);
+
+		if (state.is(Blocks.COBBLESTONE)) {
+			level.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
 			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.PASS;
