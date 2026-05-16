@@ -64,11 +64,17 @@ public class CmiLang {
 	 * @see #translateDirect(String, Object...) 直接获取 Component 而非 Builder
 	 */
 	public static LangBuilder translate(String langKey, Object... args) {
-		return builder().add(Component.translatable(String.format("%s.%s", Cmi.MODID, langKey), LangBuilder.resolveBuilders(args)));
+		return builder().add(Component.translatable(
+				String.format("%s.%s", Cmi.MODID, langKey),
+				LangBuilder.resolveBuilders(args)
+		));
 	}
 
 	public static MutableComponent translateDirect(String langKey, Object... args) {
-		return Component.translatable(String.format("%s.%s", Cmi.MODID, langKey), LangBuilder.resolveBuilders(args));
+		return Component.translatable(
+				String.format("%s.%s", Cmi.MODID, langKey),
+				LangBuilder.resolveBuilders(args)
+		);
 	}
 
 	public static LangBuilder raw(String fullKey, Object... args) {
@@ -98,7 +104,17 @@ public class CmiLang {
 	public static void isShiftDown(@NotNull List<Component> tooltip) {
 		MutableComponent shift = Component.literal("Shift")
 				.withStyle(Screen.hasShiftDown() ? ChatFormatting.WHITE : ChatFormatting.GRAY);
+
 		CreateLang.translate("tooltip.holdForDescription", shift)
+				.style(ChatFormatting.DARK_GRAY)
+				.addTo(tooltip);
+	}
+
+	public static void isCtrlDown(@NotNull List<Component> tooltip) {
+		MutableComponent ctrl = Component.literal("Ctrl")
+				.withStyle(Screen.hasControlDown() ? ChatFormatting.WHITE : ChatFormatting.GRAY);
+
+		CmiLang.translate("tooltip.holdForDescriptionCtrl", ctrl)
 				.style(ChatFormatting.DARK_GRAY)
 				.addTo(tooltip);
 	}

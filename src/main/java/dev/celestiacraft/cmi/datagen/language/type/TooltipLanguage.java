@@ -117,6 +117,11 @@ public class TooltipLanguage extends LanguageGenerate {
 				"装备后让你永不饥饿"
 		);
 		addTooltipLang(
+				"holdForDescriptionCtrl",
+				"Hold [%1$s] for Info",
+				"按住 [%1$s] 可查看信息"
+		);
+		addTooltipLang(
 				"solar_boiler.satisfy",
 				"Working conditions have been met!",
 				"已满足工作条件!"
@@ -133,18 +138,43 @@ public class TooltipLanguage extends LanguageGenerate {
 		);
 		addTooltipLang(
 				"solar_boiler.efficiency",
-				"Efficiency: %s mB / Tick",
-				"效率: %s mB / Tick"
+				" ● Efficiency: %s mB / Tick",
+				" ● 效率: %s mB / Tick"
 		);
 		addTooltipLang(
 				"solar_boiler.capacity",
-				"Capacity: %s mB",
-				"容量: %s mB"
+				" ● Capacity: %s mB",
+				" ● 容量: %s mB"
 		);
 		addTooltipLang(
 				"solar_boiler.total_capacity",
-				"Total Capacity: %s mB",
-				"总容量: %s mB"
+				" ● Total Capacity: %s mB",
+				" ● 总容量: %s mB"
+		);
+		addTooltipLang(
+				"solar_boiler.summary",
+				"A boiler that uses _Solar Energy_ to produce steam",
+				"一种利用_太阳能_生产蒸汽的锅炉"
+		);
+		addTooltipLang(
+				"solar_boiler.workCondition",
+				"The following conditions _Must_ be met before operation:",
+				"工作前_必须_确保满足以下条件:"
+		);
+		addTooltipLang(
+				"solar_boiler.condition.1",
+				" ● The current time is _Daytime_ or _Dusk_",
+				" ● 当前时间处于_白天_或_黄昏_"
+		);
+		addTooltipLang(
+				"solar_boiler.condition.2",
+				" ● The weather is clear, with no _Rain_ or _Snow_",
+				" ● 天气晴朗, 未处于_雨雪_天气"
+		);
+		addTooltipLang(
+				"solar_boiler.condition.3",
+				" ● No full _Cube_ block is obstructing the top",
+				" ● 顶上不存在_任何_完整方块遮挡"
 		);
 	}
 }
