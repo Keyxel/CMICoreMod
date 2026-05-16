@@ -19,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -112,16 +111,14 @@ public class InitialItemKitItem extends BasicItem {
 			// 列表
 			PARSED_LIST.forEach((parsed) -> {
 				ResourceLocation location = ResourceLocation.parse(parsed.id);
-				Item item = ForgeRegistries.ITEMS.getValue(location);
+				Item item = ModResources.loadResource(location).getItem();
 
 				if (item != null) {
-					Component itemName = item.getDescription();
-
 					MutableComponent line = Component.translatable(
 							"cmi.tooltip.initial_item_kit.entry",
 							parsed.id,
 							0.5,
-							itemName
+							item.getDescription()
 					);
 
 					if (parsed.count > 1) {
