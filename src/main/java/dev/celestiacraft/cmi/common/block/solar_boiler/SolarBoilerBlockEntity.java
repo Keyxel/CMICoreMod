@@ -9,6 +9,7 @@ import dev.celestiacraft.cmi.config.common.SolarBoilerConfig;
 import dev.celestiacraft.cmi.utils.ModResources;
 import dev.celestiacraft.libs.api.register.block.BasicBlockEntity;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -194,25 +195,28 @@ public abstract class SolarBoilerBlockEntity extends BasicBlockEntity implements
 					.forGoggles(tooltip);
 		}
 
-		CmiLang.builder()
-				.translate("tooltip.solar_boiler.info")
-				.style(ChatFormatting.GOLD)
-				.forGoggles(tooltip);
+		CmiLang.isCtrlDown(tooltip);
+		if (Screen.hasControlDown()) {
+			CmiLang.builder()
+					.translate("tooltip.solar_boiler.info")
+					.style(ChatFormatting.GOLD)
+					.forGoggles(tooltip);
 
-		CmiLang.builder()
-				.translate("tooltip.solar_boiler.efficiency", efficiency)
-				.style(ChatFormatting.GRAY)
-				.forGoggles(tooltip);
+			CmiLang.builder()
+					.translate("tooltip.solar_boiler.efficiency", efficiency)
+					.style(ChatFormatting.GRAY)
+					.forGoggles(tooltip);
 
-		CmiLang.builder()
-				.translate("tooltip.solar_boiler.capacity", capacity)
-				.style(ChatFormatting.GRAY)
-				.forGoggles(tooltip);
+			CmiLang.builder()
+					.translate("tooltip.solar_boiler.capacity", capacity)
+					.style(ChatFormatting.GRAY)
+					.forGoggles(tooltip);
 
-		CmiLang.builder()
-				.translate("tooltip.solar_boiler.total_capacity", capacity * 2)
-				.style(ChatFormatting.GRAY)
-				.forGoggles(tooltip);
+			CmiLang.builder()
+					.translate("tooltip.solar_boiler.total_capacity", capacity * 2)
+					.style(ChatFormatting.GRAY)
+					.forGoggles(tooltip);
+		}
 
 		return true;
 	}
