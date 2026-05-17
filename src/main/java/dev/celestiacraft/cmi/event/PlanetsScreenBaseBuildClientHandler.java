@@ -19,25 +19,22 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.*;
 
 @Mod.EventBusSubscriber(modid = Cmi.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class PlanetsScreenBaseBuildClientHandler {
 	private static final Map<PlanetsScreen, PopupState> POPUPS = new WeakHashMap<>();
-	private static final Map<StationKey, Boolean> BUILT_STATE_CACHE = new java.util.HashMap<>();
+	private static final Map<StationKey, Boolean> BUILT_STATE_CACHE = new HashMap<>();
 	private static final int POPUP_WIDTH = 188;
 	private static final int POPUP_HEIGHT = 102;
 	private static final int BUILD_BUTTON_X = 10;
