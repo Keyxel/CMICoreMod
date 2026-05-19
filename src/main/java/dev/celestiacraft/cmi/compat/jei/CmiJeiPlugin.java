@@ -16,8 +16,9 @@ import dev.celestiacraft.cmi.common.block.belt_grinder.GrindingRecipe;
 import dev.celestiacraft.cmi.common.recipe.accelerator.AcceleratorRecipe;
 import dev.celestiacraft.cmi.common.recipe.fan_processig.freezing.FreezingRecipe;
 import dev.celestiacraft.cmi.common.recipe.void_dust_collector.VoidDustCollectorRecipe;
-import dev.celestiacraft.cmi.common.recipe.water_pump.WaterPumpRecipe;
-import dev.celestiacraft.cmi.common.recipe.water_pump.WaterPumpSeaWaterRecipe;
+import dev.celestiacraft.cmi.common.recipe.well.WaterWellRecipe;
+import dev.celestiacraft.cmi.common.recipe.well.SeaWaterWellRecipe;
+import dev.celestiacraft.cmi.common.recipe.well.WellRecipe;
 import dev.celestiacraft.cmi.common.register.CmiBlock;
 import dev.celestiacraft.cmi.common.register.CmiCreateRecipe;
 import dev.celestiacraft.cmi.compat.jei.api.CmiJeiRecipeType;
@@ -65,11 +66,12 @@ public class CmiJeiPlugin implements IModPlugin {
 		loadCategories();
 		IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
 
-		registration.addRecipeCategories(AcceleratorCategory.builder(helper));
-		registration.addRecipeCategories(WaterWellCategory.builder(helper));
-		registration.addRecipeCategories(WaterWellSeaWaterCategory.builder(helper));
-		registration.addRecipeCategories(VoidDustCollectorCategory.builder(helper));
-		registration.addRecipeCategories(GrindingCategory.builder(helper));
+		registration.addRecipeCategories(
+				AcceleratorCategory.builder(helper),
+				WellCategory.builder(helper),
+				VoidDustCollectorCategory.builder(helper),
+				GrindingCategory.builder(helper)
+		);
 
 		registration.addRecipeCategories(ALL_CATEGORIES.toArray(IRecipeCategory[]::new));
 	}
@@ -79,14 +81,12 @@ public class CmiJeiPlugin implements IModPlugin {
 		RecipeManager manager = Minecraft.getInstance().level.getRecipeManager();
 
 		List<AcceleratorRecipe> acceleratorRecipe = manager.getAllRecipesFor(AcceleratorRecipe.Type.INSTANCE);
-		List<WaterPumpRecipe> waterPumpRecipe = List.of(new WaterPumpRecipe());
-		List<WaterPumpSeaWaterRecipe> waterPumpSeaWaterRecipe = List.of(new WaterPumpSeaWaterRecipe());
+		List<WellRecipe> wellRecipe = List.of(new SeaWaterWellRecipe(), new WaterWellRecipe());
 		List<VoidDustCollectorRecipe> voidDustCollectorRecipe = List.of(new VoidDustCollectorRecipe());
 		List<GrindingRecipe> grindingRecipe = manager.getAllRecipesFor(CmiCreateRecipe.GRINDING.getType());
 
 		registration.addRecipes(CmiJeiRecipeType.ACCELERATOR, acceleratorRecipe);
-		registration.addRecipes(CmiJeiRecipeType.WATER_PUMP, waterPumpRecipe);
-		registration.addRecipes(CmiJeiRecipeType.SEA_WATER_PUMP, waterPumpSeaWaterRecipe);
+		registration.addRecipes(CmiJeiRecipeType.WELL, wellRecipe);
 		registration.addRecipes(CmiJeiRecipeType.VOID_DUST_COLLECTOR, voidDustCollectorRecipe);
 		registration.addRecipes(CmiJeiRecipeType.GRINDING, grindingRecipe);
 
@@ -111,17 +111,18 @@ public class CmiJeiPlugin implements IModPlugin {
 					});
 		});
 
+		List<ItemStack> wellBlockList = List.of(
+				CmiBlock.WATER_WELL.asStack(),
+				CmiBlock.LAVA_WELL.asStack(),
+				CmiBlock.BLAZING_BLOOD_WELL.asStack()
+		);
+		wellBlockList.forEach((block) -> {
+			registration.addRecipeCatalyst(block, CmiJeiRecipeType.WELL);
+		});
+
 		registration.addRecipeCatalyst(
 				CmiBlock.ACCELERATOR.asItem().getDefaultInstance(),
 				CmiJeiRecipeType.ACCELERATOR
-		);
-		registration.addRecipeCatalyst(
-				CmiBlock.WATER_WELL.asStack(),
-				CmiJeiRecipeType.WATER_PUMP
-		);
-		registration.addRecipeCatalyst(
-				CmiBlock.WATER_WELL.asStack(),
-				CmiJeiRecipeType.SEA_WATER_PUMP
 		);
 		registration.addRecipeCatalyst(
 				CmiBlock.VOID_DUST_COLLECTOR.asStack(),
