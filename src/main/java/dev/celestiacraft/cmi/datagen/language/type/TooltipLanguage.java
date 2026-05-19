@@ -117,6 +117,16 @@ public class TooltipLanguage extends LanguageGenerate {
 				"装备后让你永不饥饿"
 		);
 		addTooltipLang(
+				"wind_vane.1",
+				"\"It is said that praying to the weather vane brings good weather\"",
+				"\"据说向风向标祈祷会获得好天气\""
+		);
+		addTooltipLang(
+				"wind_vane.2",
+				"\"See? The weather's starting to clear up\"",
+				"\"呐, 天气要开始放晴了哦\""
+		);
+		addTooltipLang(
 				"holdForDescriptionCtrl",
 				"Hold [%1$s] for Info",
 				"按住 [%1$s] 可查看信息"

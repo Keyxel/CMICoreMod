@@ -47,6 +47,7 @@ import dev.celestiacraft.cmi.common.block.well.lava.LavaWellBlock;
 import dev.celestiacraft.cmi.common.block.well.lava.LavaWellBlockItem;
 import dev.celestiacraft.cmi.common.block.well.water.WaterWellBlock;
 import dev.celestiacraft.cmi.common.block.well.water.WaterWellBlockItem;
+import dev.celestiacraft.cmi.common.block.wind_vane.WindVaneBlockItem;
 import dev.celestiacraft.cmi.compat.create.CmiStress;
 import dev.celestiacraft.cmi.tags.ModItemTags;
 import dev.celestiacraft.libs.api.register.multiblock.ControllerBlockItem;
@@ -632,7 +633,7 @@ public class CmiBlock {
 				.register();
 		WIND_VANE = Cmi.REGISTRATE.block("wind_vane", WindVaneBlock::new)
 				.initialProperties(SharedProperties::copperMetal)
-				.item()
+				.item(WindVaneBlockItem::new)
 				.model(NonNullBiConsumer.noop())
 				.build()
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
