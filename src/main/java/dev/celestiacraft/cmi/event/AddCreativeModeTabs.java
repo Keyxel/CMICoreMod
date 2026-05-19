@@ -57,12 +57,12 @@ public class AddCreativeModeTabs {
 				event.accept(item.asItem());
 			});
 
-			MetalCogWheelRegister.COMMON_LIST.forEach((cogwhee) -> {
-				event.accept(cogwhee.asItem());
+			MetalCogWheelRegister.COMMON_LIST.forEach((cogwheel) -> {
+				event.accept(cogwheel.asItem());
 			});
 		}
 
-		if (event.getTabKey() == CmiCreativeTab.MECHANISMS) {
+		if (event.getTabKey().equals(CmiCreativeTab.MECHANISMS)) {
 			event.accept(AllItems.PRECISION_MECHANISM.get());
 			event.accept(REDSTONE_MECHANISM);
 		}
