@@ -5,7 +5,6 @@ import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
 import com.simibubi.create.foundation.blockEntity.ComparatorUtil;
 import dev.celestiacraft.cmi.common.register.CmiBlockEntity;
-import dev.celestiacraft.libs.api.interaction.IFluidInteractable;
 import dev.celestiacraft.libs.api.register.block.BasicBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -23,7 +22,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public class AdvancedSpoutBlock extends BasicBlock implements IFluidInteractable, IWrenchable, IBE<AdvancedSpoutBlockEntity> {
+public class AdvancedSpoutBlock extends BasicBlock implements IWrenchable, IBE<AdvancedSpoutBlockEntity> {
 	public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 	private static final VoxelShape SUPPORT_SHAPE = Shapes.join(
 			Shapes.block(),
