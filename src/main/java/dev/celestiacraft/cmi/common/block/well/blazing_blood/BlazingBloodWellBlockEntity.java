@@ -3,6 +3,7 @@ package dev.celestiacraft.cmi.common.block.well.blazing_blood;
 import dev.celestiacraft.cmi.Cmi;
 import dev.celestiacraft.cmi.common.block.well.blazing_blood.capability.BlazingBloodWellFluidCapability;
 import dev.celestiacraft.cmi.common.register.CmiMultiblock;
+import dev.celestiacraft.libs.api.common.block.BlockUtils;
 import dev.celestiacraft.libs.api.register.multiblock.machine.FluidSlots;
 import dev.celestiacraft.libs.api.register.multiblock.machine.IOMode;
 import dev.celestiacraft.libs.api.register.multiblock.machine.MachineControllerBlockEntity;
@@ -10,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 public class BlazingBloodWellBlockEntity extends MachineControllerBlockEntity {
@@ -31,7 +33,8 @@ public class BlazingBloodWellBlockEntity extends MachineControllerBlockEntity {
 		if (level == null) {
 			return false;
 		}
-		return level.dimension().equals(Level.NETHER);
+		return level.dimension().equals(Level.NETHER)
+				&& BlockUtils.isInFortress(level, getBlockPos(), BuiltinStructures.FORTRESS);
 	}
 
 	@Override

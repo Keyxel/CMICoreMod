@@ -13,15 +13,15 @@ public class TooltipLanguage extends LanguageGenerate {
 		);
 		// Lava Well
 		addTooltipLang(
-				"lava_well.functional",
-				"Lava Well Functional",
-				"熔岩井工作正常"
+				"lava_well.runningEnvironment",
+				"Can only run in Nether",
+				"只能在下界运行"
 		);
 		// Blazing Blood Well
 		addTooltipLang(
 				"blazing_blood_well.runningEnvironment",
-				"Can only run in Nether",
-				"只能在下界运行"
+				"Can only run in Nether, and needs to be in Nether Fortress",
+				"只能在下界运行, 且需要处于下界堡垒"
 		);
 		// Steam Hammer
 		addTooltipLang(
