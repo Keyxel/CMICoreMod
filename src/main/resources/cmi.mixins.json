@@ -32,7 +32,12 @@
 		"LevelMixin",
 		"BiomeMixin",
 		"CauldronBlockMixin",
-		"LayeredCauldronBlockMixin"
+		"LayeredCauldronBlockMixin",
+		"StackUpgradeConfigMixin",
+		"BigInventoryHandlerMixin",
+		"CompactingInventoryHandlerMixin",
+		"DrawerStackItemHandlerMixin",
+		"CompactingStackItemHandlerMixin"
 	],
 	"client": [
 		"LevelRendererMixin"
