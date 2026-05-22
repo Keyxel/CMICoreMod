@@ -12,6 +12,7 @@ public class CommonConfig {
 	public static final AdvancedSpoutConfig ADVANCED_SPOUT;
 	public static final VoidDustCollectorConfig VOID_DUST_COLLECTOR;
 	public static final SolarBoilerConfig SOLAR_BOILER;
+	public static final StackStorageConfig STACK_STORAGE;
 
 	public static final ForgeConfigSpec SPEC;
 
@@ -25,6 +26,7 @@ public class CommonConfig {
 		ADVANCED_SPOUT = new AdvancedSpoutConfig(BUILDER);
 		VOID_DUST_COLLECTOR = new VoidDustCollectorConfig(BUILDER);
 		SOLAR_BOILER = new SolarBoilerConfig(BUILDER);
+		STACK_STORAGE = new StackStorageConfig(BUILDER);
 
 		BUILDER.pop();
 
