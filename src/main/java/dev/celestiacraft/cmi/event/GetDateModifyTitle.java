@@ -63,7 +63,7 @@ public class GetDateModifyTitle {
 			title += " - " + greeting;
 
 			String version = String.format(
-					"%s %s",
+					" %s-%s",
 					CmiGlobal.getModPackState(),
 					CmiGlobal.getModpackNumberVersion()
 			);
