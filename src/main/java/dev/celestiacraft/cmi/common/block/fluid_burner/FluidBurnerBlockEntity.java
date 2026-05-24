@@ -94,7 +94,9 @@ public abstract class FluidBurnerBlockEntity extends SmartBlockEntity implements
 		cachedRecipe = level.getRecipeManager()
 				.getAllRecipesFor(CmiRecipeType.FLUID_BURN.get())
 				.stream()
-				.filter(recipe -> recipe.matches(stack))
+				.filter((recipe) -> {
+					return recipe.matches(stack);
+				})
 				.findFirst()
 				.orElse(null);
 
