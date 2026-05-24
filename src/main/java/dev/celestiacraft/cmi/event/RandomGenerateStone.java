@@ -91,7 +91,7 @@ public class RandomGenerateStone {
 	}
 
 	private static boolean isTargetBlock(Block block) {
-		return block == Blocks.COBBLESTONE || block == Blocks.STONE;
+		return block.equals(Blocks.COBBLESTONE) || block.equals(Blocks.STONE);
 	}
 
 	private static Block getRandomBlock(RandomSource random) {

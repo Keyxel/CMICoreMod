@@ -4,9 +4,11 @@ import cc.sighs.auratip.api.action.Actions;
 import cc.sighs.auratip.api.radiamenu.RadialMenuBuilder;
 import cc.sighs.auratip.api.radiamenu.RadialMenuRegistry;
 import cc.sighs.auratip.data.RadialMenuData;
+import com.simibubi.create.AllItems;
 import dev.celestiacraft.cmi.Cmi;
 import dev.celestiacraft.cmi.event.radial.CmiRadialAction;
-import mekanism.common.Mekanism;
+import dev.celestiacraft.cmi.utils.ModResources;
+import mekanism.common.registries.MekanismItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -45,31 +47,22 @@ public class CmiRadialMenu {
 		);
 		builder.slot(
 				"Pickup A Wrench",
-				ResourceLocation.parse("cmi:textures/gui/wrench.png"),
-				Actions.script(
-						CmiRadialAction.WRENCH,
-						Map.of()
-				),
+				AllItems.WRENCH.asStack(),
+				Actions.script(CmiRadialAction.WRENCH, Map.of()),
 				Component.translatable("radial.cmi.wrench"),
 				"#77FFFFFF"
 		);
 		builder.slot(
 				"Pickup A Network Tool",
-				ResourceLocation.parse("cmi:textures/gui/network_tool.png"),
-				Actions.script(
-						CmiRadialAction.NETTOOL,
-						Map.of()
-				),
+				ModResources.NETWORK_TOOL.getItemStack(),
+				Actions.script(CmiRadialAction.NETTOOL, Map.of()),
 				Component.translatable("radial.cmi.net_tool"),
 				"#77FFFFFF"
 		);
 		builder.slot(
 				"Pickup A Configurator",
-				Mekanism.rl("textures/item/configurator.png"),
-				Actions.script(
-						CmiRadialAction.CONFIGURATOR,
-						Map.of()
-				),
+				MekanismItems.CONFIGURATOR.getItemStack(),
+				Actions.script(CmiRadialAction.CONFIGURATOR, Map.of()),
 				Component.translatable("radial.cmi.configurator"),
 				"#77FFFFFF"
 		);
