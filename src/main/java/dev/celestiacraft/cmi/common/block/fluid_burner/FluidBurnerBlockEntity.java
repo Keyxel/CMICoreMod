@@ -25,7 +25,7 @@ import java.util.List;
 
 public abstract class FluidBurnerBlockEntity extends SmartBlockEntity implements IHaveGoggleInformation {
 	private FluidStack fluid = FluidStack.EMPTY;
-	private FluidBurnRecipe cachedRecipe;
+	private FluidBurnRecipe cachedRecipe = null;
 	private LazyOptional<IFluidHandler> fluidCap = LazyOptional.empty();
 
 	public FluidBurnerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -94,7 +94,9 @@ public abstract class FluidBurnerBlockEntity extends SmartBlockEntity implements
 		cachedRecipe = level.getRecipeManager()
 				.getAllRecipesFor(CmiRecipeType.FLUID_BURN.get())
 				.stream()
-				.filter(recipe -> recipe.matches(stack))
+				.filter((recipe) -> {
+					return recipe.matches(stack);
+				})
 				.findFirst()
 				.orElse(null);
 
