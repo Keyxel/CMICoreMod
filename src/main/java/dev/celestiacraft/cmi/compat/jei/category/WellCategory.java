@@ -2,7 +2,6 @@ package dev.celestiacraft.cmi.compat.jei.category;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.simibubi.create.compat.jei.CreateJEI;
 import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
 import com.simibubi.create.foundation.gui.AllGuiTextures;
 import dev.celestiacraft.cmi.api.client.CmiLang;
