@@ -21,13 +21,17 @@ public class CmiPonderScene {
 
 	private static void cmi(@NotNull PonderSceneRegistrationHelper<Item> helper) {
 		helper.forComponents(CmiPonderItem.Cmi.SEA_WATER)
-				.addStoryBoard("cmi/sea_water", WaterPumpScene::getSeaWater, CmiPonderTags.CMI);
+				.addStoryBoard(cmi("sea_water"), WaterPumpScene::getSeaWater, CmiPonderTags.CMI);
 
 		helper.forComponents(CmiPonderItem.Cmi.CRUCIBLE)
-				.addStoryBoard("cmi/crucible_usage", CrucibleScene::usage, CmiPonderTags.CMI);
+				.addStoryBoard(cmi("crucible_usage"), CrucibleScene::usage, CmiPonderTags.CMI);
 
 		helper.forComponents(CmiPonderItem.Cmi.ACCELERATOR)
-				.addStoryBoard("cmi/accelerator", AcceleratorScene::usage, CmiPonderTags.CMI);
+				.addStoryBoard(cmi("accelerator"), AcceleratorScene::usage, CmiPonderTags.CMI);
+	}
+
+	private static String cmi(String path) {
+		return String.format("cmi/%s", path);
 	}
 
 	private static void mekanism(@NotNull PonderSceneRegistrationHelper<Item> helper) {
@@ -35,38 +39,46 @@ public class CmiPonderScene {
 				.addStoryBoard(NebulaLibs.loadResource("blank/5x5"), CardboardBox::usage, CmiPonderTags.MEKANISM);
 
 		helper.forComponents(CmiPonderItem.Mekanism.SPS)
-				.addStoryBoard("mekanism/sps_building", SpsScene::building, CmiPonderTags.MEKANISM);
+				.addStoryBoard(mekanism("sps_building"), SpsScene::building, CmiPonderTags.MEKANISM);
+	}
+
+	private static String mekanism(String path) {
+		return String.format("mekanism/%s", path);
 	}
 
 	private static void tconstruct(@NotNull PonderSceneRegistrationHelper<Item> helper) {
 		helper.forComponents(CmiPonderItem.TConstruct.MELTER)
-				.addStoryBoard("tconstruct/melter_building", MelterScene::building, CmiPonderTags.TCONSTRUCT)
-				.addStoryBoard("tconstruct/melter_using", MelterScene::using, CmiPonderTags.TCONSTRUCT);
+				.addStoryBoard(tconstruct("melter_building"), MelterScene::building, CmiPonderTags.TCONSTRUCT)
+				.addStoryBoard(tconstruct("melter_using"), MelterScene::using, CmiPonderTags.TCONSTRUCT);
 
 		helper.forComponents(CmiPonderItem.TConstruct.ALLOYER)
-				.addStoryBoard("tconstruct/alloyer_building", AlloyerScene::building, CmiPonderTags.TCONSTRUCT);
+				.addStoryBoard(tconstruct("alloyer_building"), AlloyerScene::building, CmiPonderTags.TCONSTRUCT);
 
 		helper.forComponents(CmiPonderItem.TConstruct.HEATER)
-				.addStoryBoard("tconstruct/heater_using", HeaterScene::using, CmiPonderTags.TCONSTRUCT);
+				.addStoryBoard(tconstruct("heater_using"), HeaterScene::using, CmiPonderTags.TCONSTRUCT);
 
 		helper.forComponents(CmiPonderItem.TConstruct.CASTING)
-				.addStoryBoard("tconstruct/casting", CastingScene::cast, CmiPonderTags.TCONSTRUCT);
+				.addStoryBoard(tconstruct("casting"), CastingScene::cast, CmiPonderTags.TCONSTRUCT);
 
 		helper.forComponents(CmiPonderItem.TConstruct.SAND)
-				.addStoryBoard("tconstruct/sand_casting", CastingScene::sand, CmiPonderTags.TCONSTRUCT);
+				.addStoryBoard(tconstruct("sand_casting"), CastingScene::sand, CmiPonderTags.TCONSTRUCT);
 
 		helper.forComponents(CmiPonderItem.TConstruct.SMELTERY)
-				.addStoryBoard("tconstruct/smeltery_building", SmelteryScene::building, CmiPonderTags.TCONSTRUCT)
-				.addStoryBoard("tconstruct/smeltery_using", SmelteryScene::using, CmiPonderTags.TCONSTRUCT)
-				.addStoryBoard("tconstruct/smeltery_mini", SmelteryScene::mini, CmiPonderTags.TCONSTRUCT);
+				.addStoryBoard(tconstruct("smeltery_building"), SmelteryScene::building, CmiPonderTags.TCONSTRUCT)
+				.addStoryBoard(tconstruct("smeltery_using"), SmelteryScene::using, CmiPonderTags.TCONSTRUCT)
+				.addStoryBoard(tconstruct("smeltery_mini"), SmelteryScene::mini, CmiPonderTags.TCONSTRUCT);
 
 		helper.forComponents(CmiPonderItem.TConstruct.FOUNDRY)
-				.addStoryBoard("tconstruct/foundry_building", FoundryScene::building, CmiPonderTags.TCONSTRUCT);
+				.addStoryBoard(tconstruct("foundry_building"), FoundryScene::building, CmiPonderTags.TCONSTRUCT);
 
 		helper.forComponents(CmiPonderItem.TConstruct.TANK)
-				.addStoryBoard("tconstruct/tank", TankScene::tank, CmiPonderTags.TCONSTRUCT);
+				.addStoryBoard(tconstruct("tank"), TankScene::tank, CmiPonderTags.TCONSTRUCT);
 
 		helper.forComponents(CmiPonderItem.TConstruct.CANNONS)
-				.addStoryBoard("tconstruct/fluid_cannon", CannonScene::using, CmiPonderTags.TCONSTRUCT);
+				.addStoryBoard(tconstruct("fluid_cannon"), CannonScene::using, CmiPonderTags.TCONSTRUCT);
+	}
+
+	private static String tconstruct(String path) {
+		return String.format("tconstruct/%s", path);
 	}
 }
