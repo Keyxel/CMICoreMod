@@ -34,7 +34,7 @@ public class WellCategory {
 		return SimpleJeiCategory.builder(CmiJeiRecipeType.WELL, helper)
 				.setTitle(CmiLang.JeiLang.setTranCategoryTitle("well"))
 				.setSize(178, 72)
-				.setIcon(CmiBlock.WATER_WELL.get().asItem().getDefaultInstance())
+				.setIcon(CmiBlock.WATER_WELL.asStack())
 				.setBackground(0, 0)
 				.setRecipe((builder, recipe, group) -> {
 					if (recipe instanceof WaterWellRecipe water) {
