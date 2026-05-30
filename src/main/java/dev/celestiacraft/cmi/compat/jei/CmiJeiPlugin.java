@@ -21,6 +21,7 @@ import dev.celestiacraft.cmi.common.register.CmiBlock;
 import dev.celestiacraft.cmi.common.register.CmiCreateRecipe;
 import dev.celestiacraft.cmi.compat.jei.api.CmiJeiRecipeType;
 import dev.celestiacraft.cmi.compat.jei.category.*;
+import dev.celestiacraft.cmi.utils.ModResources;
 import earth.terrarium.adastra.common.registry.ModItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -127,7 +128,7 @@ public class CmiJeiPlugin implements IModPlugin {
 				CmiJeiRecipeType.VOID_DUST_COLLECTOR
 		);
 		registration.addRecipeCatalyst(
-				VoidDustCollectorCategory.VOID_SPRING.asItem().getDefaultInstance(),
+				ModResources.VOID_SPRING.getItemStack(),
 				CmiJeiRecipeType.VOID_DUST_COLLECTOR
 		);
 		registration.addRecipeCatalyst(
