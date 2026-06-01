@@ -36,7 +36,6 @@ public class InitialItemKitItem extends BasicItem {
 			"create:stressometer",
 			"create:item_hatch",
 			"63x create:item_vault",
-			"craftingstationjei:crafting_station",
 			"tiab:time_in_a_bottle"
 	);
 
