@@ -59,7 +59,9 @@ public class TestCokeOvenIOBlockEntity extends IOBlockEntity {
 	}
 
 	public int fillFluid(FluidStack stack, IFluidHandler.FluidAction action) {
-		if (stack.isEmpty()) return 0;
+		if (stack.isEmpty()) {
+			return 0;
+		}
 
 		int fillable = Math.min(stack.getAmount(), 4000 - fluid.getAmount());
 
