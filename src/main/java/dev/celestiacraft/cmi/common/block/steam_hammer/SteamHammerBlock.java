@@ -1,6 +1,7 @@
 package dev.celestiacraft.cmi.common.block.steam_hammer;
 
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlock;
+import dev.celestiacraft.cmi.common.register.CmiBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -11,7 +12,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-import dev.celestiacraft.cmi.common.register.CmiBlockEntity;
 
 public class SteamHammerBlock extends MechanicalPressBlock {
 	public SteamHammerBlock(Properties properties) {
