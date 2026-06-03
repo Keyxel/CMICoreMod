@@ -2,10 +2,10 @@ package dev.celestiacraft.cmi.common.item;
 
 import com.simibubi.create.foundation.item.TooltipHelper;
 import dev.celestiacraft.cmi.utils.ModResources;
+import dev.celestiacraft.libs.api.client.context.TooltipContext;
 import dev.celestiacraft.libs.api.register.item.BasicItem;
 import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -16,11 +16,9 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -39,7 +37,8 @@ public class InitialItemKitItem extends BasicItem {
 			"tiab:time_in_a_bottle"
 	);
 
-	private static final List<Parsed> PARSED_LIST = ITEM_LIST.stream()
+	private static final List<Parsed> PARSED_LIST = ITEM_LIST
+			.stream()
 			.map(InitialItemKitItem::parseStatic)
 			.toList();
 
@@ -47,8 +46,10 @@ public class InitialItemKitItem extends BasicItem {
 	public @NotNull InteractionResult useOn(@NotNull UseOnContext context) {
 		Player player = context.getPlayer();
 		Level level = context.getLevel();
+		InteractionHand hand = context.getHand();
+		ItemStack stack = context.getItemInHand();
 
-		if (context.getHand() != InteractionHand.MAIN_HAND) {
+		if (hand != InteractionHand.MAIN_HAND) {
 			return InteractionResult.PASS;
 		}
 		if (player == null || !player.isCrouching()) {
@@ -74,14 +75,16 @@ public class InitialItemKitItem extends BasicItem {
 				);
 			}
 		});
-		context.getItemInHand().shrink(1);
+		stack.shrink(1);
 
 		return InteractionResult.SUCCESS;
 	}
 
 	@Override
-	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-		if (Screen.hasShiftDown()) {
+	public void addTooltips(TooltipContext context) {
+		List<Component> tooltip = context.getTooltip();
+
+		if (context.isShiftDown()) {
 			// 使用方法
 			tooltip.addAll(TooltipHelper.cutStringTextComponent(
 					Component.translatable("cmi.tooltip.initial_item_kit.usage").getString(),
@@ -132,6 +135,12 @@ public class InitialItemKitItem extends BasicItem {
 		}
 	}
 
+	/**
+	 * 解析字符串
+	 *
+	 * @param entry
+	 * @return
+	 */
 	private static Parsed parseStatic(String entry) {
 		entry = entry.trim();
 
