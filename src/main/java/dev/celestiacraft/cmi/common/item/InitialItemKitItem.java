@@ -62,12 +62,7 @@ public class InitialItemKitItem extends BasicItem {
 
 			if (item != null) {
 				player.addItem(new ItemStack(item, parsed.count));
-
-				level.playSound(
-						null,
-						player.getX(),
-						player.getY(),
-						player.getZ(),
+				player.playNotifySound(
 						SoundEvents.ITEM_PICKUP,
 						SoundSource.PLAYERS,
 						1,
