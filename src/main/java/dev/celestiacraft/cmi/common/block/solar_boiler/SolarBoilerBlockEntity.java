@@ -15,6 +15,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -40,11 +41,9 @@ public abstract class SolarBoilerBlockEntity extends BasicBlockEntity implements
 			return stack.getFluid().is(FluidTags.WATER);
 		}, this::setChanged);
 
-		steamTank = new SolarBoilerFluidTank(
-				capacity,
-				(stack) -> true,
-				this::setChanged
-		);
+		steamTank = new SolarBoilerFluidTank(capacity, (stack) -> {
+			return true;
+		}, this::setChanged);
 
 		fluidCapability = new SolarBoilerFluidCapability(waterTank, steamTank);
 	}
@@ -78,13 +77,41 @@ public abstract class SolarBoilerBlockEntity extends BasicBlockEntity implements
 		process();
 	}
 
+	/**
+	 * 判断当前是否满足太阳能锅炉的运行条件
+	 * <p>
+	 * 太阳能锅炉需要接收到充足的自然光照才能运行, 因此其顶部必须能够直接看到天空
+	 * <ul>
+	 *     <li>在主世界中, 仅可在白天且未降雨时运行</li>
+	 *     <li>在末地中, 由于不存在昼夜循环和天气系统, 因此只要能够看到天空即可运行</li>
+	 * </ul>
+	 * 当任意条件不满足时, 锅炉将停止产热和消耗水
+	 *
+	 * @return {@code true} 如果当前满足运行条件, 否则返回 {@code false}
+	 */
 	protected boolean canWork() {
+		if (level.dimension().equals(Level.END)) {
+			return hasOpenSky();
+		}
+
 		long time = level.getDayTime() % 24000;
 
-		return time >= 0
+		return level.canSeeSky(worldPosition.above())
 				&& time < 13000
-				&& level.canSeeSky(worldPosition.above())
 				&& !level.isRainingAt(worldPosition);
+	}
+
+	private boolean hasOpenSky() {
+		BlockPos pos = worldPosition.above();
+
+		for (int y = pos.getY(); y < level.getMaxBuildHeight(); y++) {
+			BlockPos statePos = new BlockPos(pos.getX(), y, pos.getZ());
+			if (!level.getBlockState(statePos).isAir()) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	protected void process() {

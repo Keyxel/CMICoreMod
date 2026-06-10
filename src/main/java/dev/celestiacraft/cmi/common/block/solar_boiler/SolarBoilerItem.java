@@ -37,12 +37,12 @@ public class SolarBoilerItem extends BasicBlockItem {
 	@Override
 	public void addTooltips(TooltipContext context) {
 		judgmentBlock();
-		addCommonTooltip(context);
+		addSummaryTooltip(context);
 		addShiftTooltip(context);
 		addCtrlTooltip(context);
 	}
 
-	private void addCommonTooltip(TooltipContext context) {
+	private void addSummaryTooltip(TooltipContext context) {
 		List<Component> tooltip = context.getTooltip();
 
 		tooltip.addAll(TooltipHelper.cutStringTextComponent(
@@ -76,6 +76,12 @@ public class SolarBoilerItem extends BasicBlockItem {
 			));
 			tooltip.addAll(TooltipHelper.cutStringTextComponent(
 					CmiLang.translateDirect("tooltip.solar_boiler.condition.3").getString(),
+					FontHelper.Palette.STANDARD_CREATE.primary(),
+					FontHelper.Palette.STANDARD_CREATE.highlight()
+			));
+
+			tooltip.addAll(TooltipHelper.cutStringTextComponent(
+					CmiLang.translateDirect("tooltip.solar_boiler.condition.4").getString(),
 					FontHelper.Palette.STANDARD_CREATE.primary(),
 					FontHelper.Palette.STANDARD_CREATE.highlight()
 			));
