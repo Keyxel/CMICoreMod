@@ -18,6 +18,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -102,16 +103,11 @@ public abstract class SolarBoilerBlockEntity extends BasicBlockEntity implements
 	}
 
 	private boolean hasOpenSky() {
-		BlockPos pos = worldPosition.above();
-
-		for (int y = pos.getY(); y < level.getMaxBuildHeight(); y++) {
-			BlockPos statePos = new BlockPos(pos.getX(), y, pos.getZ());
-			if (!level.getBlockState(statePos).isAir()) {
-				return false;
-			}
-		}
-
-		return true;
+		return level.getHeight(
+				Heightmap.Types.MOTION_BLOCKING,
+				worldPosition.getX(),
+				worldPosition.getZ()
+		) <= worldPosition.getY() + 1;
 	}
 
 	protected void process() {
