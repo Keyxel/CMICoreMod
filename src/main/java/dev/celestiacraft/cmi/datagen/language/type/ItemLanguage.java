@@ -88,10 +88,8 @@ public class ItemLanguage extends LanguageGenerate {
 				info("ultimate_mekanism", "Ultimate General", "终极通用"),
 				info("computing", "Computing", "计算"),
 				info("air_tight", "Air Tight", "气密"),
-				info("tier_1_aviation", "Tier 1 Aviation", "壹级科技航天"),
-				info("tier_2_aviation", "Tier 2 Aviation", "贰级科技航天"),
-				info("tier_3_aviation", "Tier 3 Aviation", "叁级科技航天"),
-				info("tier_4_aviation", "Tier 4 Aviation", "肆级科技航天"),
+				info("aeronautic", "Aeronautic", "航空"),
+				info("astronautic", "Astronautic", "宇航"),
 				info("nuclear", "Nuclear", "核"),
 				info("antimatter", "Antimatter", "反物质"),
 				info("creative", "Creative", "创造")
