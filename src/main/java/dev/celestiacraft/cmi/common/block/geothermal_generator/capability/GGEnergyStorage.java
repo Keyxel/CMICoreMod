@@ -30,7 +30,7 @@ public class GGEnergyStorage implements IEnergyStorage {
 	public int extractEnergy(int maxExtract, boolean simulate) {
 		int extracted = Math.min(
 				getEnergyStored(),
-				Math.min(maxExtract, 5000)
+				Math.min(maxExtract, 4096)
 		);
 
 		if (!simulate) {
@@ -47,7 +47,7 @@ public class GGEnergyStorage implements IEnergyStorage {
 
 	@Override
 	public int getMaxEnergyStored() {
-		return 500000;
+		return 409600;
 	}
 
 	@Override
