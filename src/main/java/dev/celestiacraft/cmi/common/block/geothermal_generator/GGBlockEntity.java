@@ -73,7 +73,10 @@ public class GGBlockEntity extends BasicBlockEntity {
 	 * BASE_PRODUCTION × 接触面数
 	 * </pre>
 	 *
-	 * <p>当没有任何有效流体接触时, 发电机停止工作并返回 0
+	 * <p>
+	 * 因此理论上产量最高可以达到 ({@link #BASE_PRODUCTION} * 6) / Tick
+	 * <p>
+	 * 当没有任何有效流体接触时, 发电机停止工作并返回 0
 	 *
 	 * @return 当前 Tick 产生的 FE 数量
 	 */
