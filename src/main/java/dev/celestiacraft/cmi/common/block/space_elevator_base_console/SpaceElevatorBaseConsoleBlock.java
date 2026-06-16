@@ -5,8 +5,8 @@ import dev.celestiacraft.cmi.common.block.space_elevator_base_console.io.IoPortT
 import dev.celestiacraft.cmi.common.block.space_elevator_base_console.io.SpaceElevatorIoPortBlock;
 import dev.celestiacraft.cmi.common.block.space_elevator_base_console.io.SpaceElevatorIoPortBlockEntity;
 import dev.celestiacraft.cmi.common.block.space_elevator_base_console.structure.SpaceElevatorBaseStructure;
-import dev.celestiacraft.cmi.common.register.CmiBlock;
 import dev.celestiacraft.cmi.common.register.CmiBlockEntity;
+import dev.celestiacraft.cmi.common.register.block.SpaceElevatorBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.entity.LivingEntity;
@@ -61,13 +61,13 @@ public class SpaceElevatorBaseConsoleBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	public RenderShape getRenderShape(BlockState state) {
+	public @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
 		return RenderShape.ENTITYBLOCK_ANIMATED;
 	}
 
 	@Nullable
 	@Override
-	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+	public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
 		return CmiBlockEntity.SPACE_ELEVATOR_BASE_CONSOLE.get().create(pos, state);
 	}
 
@@ -160,7 +160,7 @@ public class SpaceElevatorBaseConsoleBlock extends BaseEntityBlock {
 				continue;
 			}
 			IoPortType ioType = ioByOffset.getOrDefault(offset, IoPortType.NONE);
-			BlockState portState = CmiBlock.SPACE_ELEVATOR_IO_PORT.getDefaultState()
+			BlockState portState = SpaceElevatorBlocks.SPACE_ELEVATOR_IO_PORT.getDefaultState()
 					.setValue(SpaceElevatorIoPortBlock.IO_TYPE, ioType)
 					.setValue(SpaceElevatorIoPortBlock.SHAPE, entry.getValue());
 			level.setBlock(portPos, portState, 3);

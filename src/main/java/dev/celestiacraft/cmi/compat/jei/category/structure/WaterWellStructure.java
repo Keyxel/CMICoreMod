@@ -5,7 +5,7 @@ import blusunrize.immersiveengineering.common.register.IEBlocks;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
-import dev.celestiacraft.cmi.common.register.CmiBlock;
+import dev.celestiacraft.cmi.common.register.block.WallBlocks;
 import dev.celestiacraft.cmi.utils.ModResources;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.level.block.Block;
@@ -28,7 +28,7 @@ public class WaterWellStructure extends AnimatedKinetics {
 		matrixStack.mulPose(Axis.YP.rotationDegrees(22.5F));
 
 		int scale = 15;
-		defaultBlockElement(CmiBlock.WATER_WELL.get().defaultBlockState())
+		defaultBlockElement(WallBlocks.WATER_WELL.get().defaultBlockState())
 				.atLocal(0.0F, 4.0F, 0.0F)
 				.scale(scale)
 				.render(graphics);

@@ -9,7 +9,7 @@ import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import com.simibubi.create.foundation.gui.AllGuiTextures;
 import dev.celestiacraft.cmi.api.client.CmiLang;
 import dev.celestiacraft.cmi.common.recipe.accelerator.AcceleratorRecipe;
-import dev.celestiacraft.cmi.common.register.CmiBlock;
+import dev.celestiacraft.cmi.common.register.block.MachineBlocks;
 import dev.celestiacraft.cmi.compat.jei.api.CmiJeiRecipeType;
 import dev.celestiacraft.libs.compat.jei.categoty.SimpleJeiCategory;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -26,7 +26,7 @@ public class AcceleratorCategory {
 				.setSize(178, 72)
 				.setIcon(() -> {
 					return new DoubleItemIcon(
-							() -> CmiBlock.ACCELERATOR.asStack(),
+							() -> MachineBlocks.ACCELERATOR.asStack(),
 							() -> AllItems.PRECISION_MECHANISM.asStack()
 					);
 				})
@@ -84,7 +84,7 @@ public class AcceleratorCategory {
 					pose.mulPose(Axis.XP.rotationDegrees(-15.5f));
 					pose.mulPose(Axis.YP.rotationDegrees(22.5f));
 
-					AnimatedKinetics.defaultBlockElement(CmiBlock.ACCELERATOR.get().defaultBlockState())
+					AnimatedKinetics.defaultBlockElement(MachineBlocks.ACCELERATOR.get().defaultBlockState())
 							.rotateBlock(0, 180, 0)
 							.atLocal(0.0, 0.0, 0.0)
 							.scale(24.0)

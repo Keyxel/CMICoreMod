@@ -3,15 +3,16 @@ package dev.celestiacraft.cmi.compat.jei.category.structure;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
+import dev.celestiacraft.cmi.Cmi;
+import dev.celestiacraft.cmi.common.block.void_dust_collector.VoidDustCollectorBlock;
+import dev.celestiacraft.cmi.common.register.block.MachineBlocks;
+import dev.celestiacraft.libs.api.register.block.BasicBlock;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
-import dev.celestiacraft.cmi.Cmi;
-import dev.celestiacraft.cmi.common.block.void_dust_collector.VoidDustCollectorBlock;
-import dev.celestiacraft.cmi.common.register.CmiBlock;
 
 public class VoidDustCollectorStructure extends AnimatedKinetics {
 	private static final Lazy<Block> VOID_SPRING = Lazy.of(() -> {
@@ -32,8 +33,8 @@ public class VoidDustCollectorStructure extends AnimatedKinetics {
 		matrixStack.mulPose(Axis.YP.rotationDegrees(22.5F));
 
 		int scale = 23;
-		defaultBlockElement(CmiBlock.VOID_DUST_COLLECTOR.get().defaultBlockState()
-				.setValue(VoidDustCollectorBlock.WORKING, true)
+		defaultBlockElement(MachineBlocks.VOID_DUST_COLLECTOR.get().defaultBlockState()
+				.setValue(BasicBlock.LIT, true)
 				.setValue(VoidDustCollectorBlock.FACING, Direction.SOUTH))
 				.atLocal(0.0F, 1.0F, 0.0F)
 				.scale(scale)

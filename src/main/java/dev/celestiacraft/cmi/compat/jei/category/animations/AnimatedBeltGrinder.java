@@ -3,11 +3,11 @@ package dev.celestiacraft.cmi.compat.jei.category.animations;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.core.Direction;
 import dev.celestiacraft.cmi.client.block.CmiBlockPartialModel;
 import dev.celestiacraft.cmi.common.block.belt_grinder.BeltGrinderBlock;
-import dev.celestiacraft.cmi.common.register.CmiBlock;
+import dev.celestiacraft.cmi.common.register.block.MachineBlocks;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.Direction;
 
 public class AnimatedBeltGrinder extends AnimatedKinetics {
 	@Override
@@ -26,7 +26,7 @@ public class AnimatedBeltGrinder extends AnimatedKinetics {
 				.scale(scale)
 				.render(graphics);
 
-		blockElement(CmiBlock.BELT_GRINDER.getDefaultState()
+		blockElement(MachineBlocks.BELT_GRINDER.getDefaultState()
 				.setValue(BeltGrinderBlock.HORIZONTAL_FACING, Direction.WEST))
 				.rotateBlock(0, 0, 0)
 				.scale(scale)

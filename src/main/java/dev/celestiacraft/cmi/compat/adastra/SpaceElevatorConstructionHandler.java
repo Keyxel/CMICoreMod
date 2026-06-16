@@ -7,8 +7,8 @@ import dev.celestiacraft.cmi.common.block.space_elevator_base_console.structure.
 import dev.celestiacraft.cmi.common.entity.space_elevator.SpaceElevatorEntity;
 import dev.celestiacraft.cmi.common.recipe.space_elevator_construction.FluidIngredientEntry;
 import dev.celestiacraft.cmi.common.recipe.space_elevator_construction.SpaceElevatorConstructionRecipe;
-import dev.celestiacraft.cmi.common.register.CmiBlock;
 import dev.celestiacraft.cmi.common.register.CmiEntity;
+import dev.celestiacraft.cmi.common.register.block.SpaceElevatorBlocks;
 import earth.terrarium.adastra.api.planets.Planet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -57,7 +57,7 @@ public final class SpaceElevatorConstructionHandler {
 	}
 
 	public static boolean isAnchorBlock(Level level, BlockPos pos) {
-		return level.getBlockState(pos).is(CmiBlock.SPACE_ELEVATOR_BASE_CONSOLE.get());
+		return level.getBlockState(pos).is(SpaceElevatorBlocks.SPACE_ELEVATOR_BASE_CONSOLE.get());
 	}
 
 	@Nullable

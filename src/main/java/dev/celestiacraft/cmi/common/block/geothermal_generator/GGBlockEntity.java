@@ -1,0 +1,115 @@
+package dev.celestiacraft.cmi.common.block.geothermal_generator;
+
+import dev.celestiacraft.cmi.common.block.geothermal_generator.capability.GGEnergyStorage;
+import dev.celestiacraft.cmi.tags.CmiFluidTags;
+import dev.celestiacraft.libs.api.register.block.BasicBlock;
+import dev.celestiacraft.libs.api.register.block.BasicBlockEntity;
+import lombok.Getter;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+public class GGBlockEntity extends BasicBlockEntity {
+	@Getter
+	private int selfIncreasingEnergy = 0;
+	private final GGEnergyStorage storage;
+	@Getter
+	private int storagedEnergy;
+	@Getter
+	private static final int BASE_PRODUCTION = 5000;
+
+	public GGBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+		super(type, pos, state);
+		storage = new GGEnergyStorage(this);
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+
+		if (level == null || level.isClientSide()) {
+			return;
+		}
+
+		int production = working();
+
+		boolean working = production > 0;
+
+		BlockState state = getBlockState();
+
+		if (state.getValue(BasicBlock.LIT) != working) {
+			level.setBlock(
+					worldPosition,
+					state.setValue(BasicBlock.LIT, working),
+					3
+			);
+		}
+
+		if (working) {
+			addEnergy(production);
+		}
+	}
+
+	/**
+	 * 工作方法
+	 */
+	private int working() {
+		// 流体接触面
+		int contactSurface = 0;
+
+		for (Direction direction : Direction.values()) {
+			BlockPos pos = worldPosition.relative(direction);
+			FluidState fluidState = level.getFluidState(pos);
+
+			if (fluidState.is(CmiFluidTags.GG_WORK_FLUID)) {
+				contactSurface++;
+			}
+		}
+
+		if (contactSurface == 0) {
+			return 0;
+		}
+
+		return BASE_PRODUCTION * (1 << (contactSurface - 1));
+	}
+
+	/**
+	 * 通过获取BlockState判断是否在工作
+	 *
+	 * @return
+	 */
+	private boolean isWorking() {
+		BlockState state = getBlockState();
+
+		return state.getValue(BasicBlock.LIT);
+	}
+
+	public void setStoragedEnergy(int energy) {
+		storagedEnergy = energy;
+		setChanged();
+	}
+
+	public void addEnergy(int amount) {
+		storagedEnergy = Math.min(
+				storagedEnergy + amount,
+				500000
+		);
+
+		setChanged();
+	}
+
+	@Override
+	public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction) {
+		if (capability == ForgeCapabilities.ENERGY) {
+			return storage.get(direction).cast();
+		}
+		return super.getCapability(capability, direction);
+	}
+}

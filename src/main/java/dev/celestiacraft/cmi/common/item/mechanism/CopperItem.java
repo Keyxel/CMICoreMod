@@ -1,7 +1,7 @@
 package dev.celestiacraft.cmi.common.item.mechanism;
 
 import dev.celestiacraft.cmi.common.item.MechanismItem;
-import dev.celestiacraft.cmi.common.register.CmiBlock;
+import dev.celestiacraft.cmi.common.register.block.MachineBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -35,7 +35,7 @@ public class CopperItem extends MechanismItem {
 		HitResult hitResult = player.pick(5.0d, 0.0f, false);
 
 		if (hitResult instanceof BlockHitResult blockHit) {
-			if (state.is(CmiBlock.ACCELERATOR.get())) {
+			if (state.is(MachineBlocks.ACCELERATOR.get())) {
 				player.swing(hand);
 				return InteractionResult.SUCCESS;
 			}

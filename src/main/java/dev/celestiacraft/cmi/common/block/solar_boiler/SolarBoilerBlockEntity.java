@@ -4,7 +4,7 @@ import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import dev.celestiacraft.cmi.api.client.CmiLang;
 import dev.celestiacraft.cmi.common.block.solar_boiler.capability.SolarBoilerFluidCapability;
 import dev.celestiacraft.cmi.common.block.solar_boiler.capability.SolarBoilerFluidTank;
-import dev.celestiacraft.cmi.common.register.CmiBlock;
+import dev.celestiacraft.cmi.common.register.block.SolarBoilerBlocks;
 import dev.celestiacraft.cmi.config.common.SolarBoilerConfig;
 import dev.celestiacraft.cmi.utils.ModResources;
 import dev.celestiacraft.libs.api.register.block.BasicBlockEntity;
@@ -193,13 +193,13 @@ public abstract class SolarBoilerBlockEntity extends BasicBlockEntity implements
 		int efficiency = 0;
 		int capacity = 0;
 
-		if (getBlockState().is(CmiBlock.BRONZE_SOLAR_BOILER.get())) {
+		if (getBlockState().is(SolarBoilerBlocks.BRONZE_SOLAR_BOILER.get())) {
 			efficiency = SolarBoilerConfig.BRONZE_EFFICIENCY.get();
 			capacity = SolarBoilerConfig.BRONZE_CAPACITY.get();
-		} else if (getBlockState().is(CmiBlock.CAST_IRON_SOLAR_BOILER.get())) {
+		} else if (getBlockState().is(SolarBoilerBlocks.CAST_IRON_SOLAR_BOILER.get())) {
 			efficiency = SolarBoilerConfig.CAST_IRON_EFFICIENCY.get();
 			capacity = SolarBoilerConfig.CAST_IRON_CAPACITY.get();
-		} else if (getBlockState().is(CmiBlock.STEEL_SOLAR_BOILER.get())) {
+		} else if (getBlockState().is(SolarBoilerBlocks.STEEL_SOLAR_BOILER.get())) {
 			efficiency = SolarBoilerConfig.STEEL_EFFICIENCY.get();
 			capacity = SolarBoilerConfig.STEEL_CAPACITY.get();
 		}
