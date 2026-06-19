@@ -2,11 +2,10 @@ package dev.celestiacraft.cmi.common.register.block;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.celestiacraft.cmi.Cmi;
+import dev.celestiacraft.cmi.api.client.assets.ItemModelGen;
 import dev.celestiacraft.cmi.common.block.mars_geothermal_vent.MarsGeothermalVentBlock;
 import dev.celestiacraft.cmi.common.block.mercury_geothermal_vent.MercuryGeothermalVentBlock;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.client.model.generators.BlockModelProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.Tags;
 
 public class VentBlocks {
@@ -16,45 +15,19 @@ public class VentBlocks {
 	static {
 		MARS_GEO = Cmi.REGISTRATE.block("mars_geothermal_vent", MarsGeothermalVentBlock::new)
 				.item()
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/mars_geothermal_vent")
-					);
-				})
+				.model(ItemModelGen.withModel("block/mars_geothermal_vent"))
 				.build()
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 				.tag(Tags.Blocks.NEEDS_WOOD_TOOL)
-				.blockstate((context, provider) -> {
-					provider.getVariantBuilder(context.get())
-							.forAllStatesExcept((state) -> {
-								BlockModelProvider models = provider.models();
-								return ConfiguredModel.builder()
-										.modelFile(models.getExistingFile(provider.modLoc("block/mars_geothermal_vent")))
-										.build();
-							});
-				})
+				.blockstate(MarsGeothermalVentBlock.genBlockState())
 				.register();
 		MERCURY_GEO = Cmi.REGISTRATE.block("mercury_geothermal_vent", MercuryGeothermalVentBlock::new)
 				.item()
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/mercury_geothermal_vent")
-					);
-				})
+				.model(ItemModelGen.withModel("block/mercury_geothermal_vent"))
 				.build()
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 				.tag(Tags.Blocks.NEEDS_WOOD_TOOL)
-				.blockstate((context, provider) -> {
-					provider.getVariantBuilder(context.get())
-							.forAllStatesExcept((state) -> {
-								BlockModelProvider models = provider.models();
-								return ConfiguredModel.builder()
-										.modelFile(models.getExistingFile(provider.modLoc("block/mercury_geothermal_vent")))
-										.build();
-							});
-				})
+				.blockstate(MercuryGeothermalVentBlock.genBlockState())
 				.register();
 	}
 

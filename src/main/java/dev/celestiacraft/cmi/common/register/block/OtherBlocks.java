@@ -7,12 +7,13 @@ import com.simibubi.create.foundation.data.TagGen;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import dev.celestiacraft.cmi.Cmi;
+import dev.celestiacraft.cmi.api.client.assets.ItemModelGen;
 import dev.celestiacraft.cmi.common.block.golden_sapling.GoldenSaplingBlock;
 import dev.celestiacraft.cmi.common.block.test_gravel.TestGravelBlock;
 import dev.celestiacraft.cmi.common.block.wind_vane.WindVaneBlock;
 import dev.celestiacraft.cmi.common.block.wind_vane.WindVaneBlockItem;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.client.model.generators.BlockModelProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.Tags;
@@ -26,16 +27,14 @@ public class OtherBlocks {
 
 	static {
 		NAHUATL_SCAFFOLD = Cmi.REGISTRATE.block("nahuatl_scaffold", ScaffoldingBlock::new)
-				.properties((properties) -> {
-					return properties.noOcclusion();
-				})
+				.properties(BlockBehaviour.Properties::noOcclusion)
 				.initialProperties(SharedProperties::wooden)
 				.transform(TagGen.axeOnly())
 				.tag(BlockTags.MINEABLE_WITH_AXE)
 				.tag(Tags.Blocks.NEEDS_WOOD_TOOL)
 				.blockstate((context, provider) -> {
 					provider.getVariantBuilder(context.get())
-							.forAllStates((BlockState state) -> {
+							.forAllStates((state) -> {
 								BlockModelProvider models = provider.models();
 								return ConfiguredModel.builder()
 										.modelFile(models.getExistingFile(provider.modLoc("block/scaffold/nahuatl")))
@@ -43,26 +42,19 @@ public class OtherBlocks {
 							});
 				})
 				.item()
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/scaffold/nahuatl")
-					);
-				})
+				.model(ItemModelGen.withModel("block/scaffold/nahuatl"))
 				.build()
 				.register();
 
 		BLAZEWOOD_SCAFFOLD = Cmi.REGISTRATE.block("blazewood_scaffold", ScaffoldingBlock::new)
-				.properties((properties) -> {
-					return properties.noOcclusion();
-				})
+				.properties(BlockBehaviour.Properties::noOcclusion)
 				.initialProperties(SharedProperties::wooden)
 				.transform(TagGen.axeOnly())
 				.tag(BlockTags.MINEABLE_WITH_AXE)
 				.tag(Tags.Blocks.NEEDS_WOOD_TOOL)
 				.blockstate((context, provider) -> {
 					provider.getVariantBuilder(context.get())
-							.forAllStates((BlockState state) -> {
+							.forAllStates((state) -> {
 								BlockModelProvider models = provider.models();
 								return ConfiguredModel.builder()
 										.modelFile(models.getExistingFile(provider.modLoc("block/scaffold/blazewood")))
@@ -70,12 +62,7 @@ public class OtherBlocks {
 							});
 				})
 				.item()
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/scaffold/blazewood")
-					);
-				})
+				.model(ItemModelGen.withModel("block/scaffold/blazewood"))
 				.build()
 				.register();
 

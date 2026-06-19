@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.data.TagGen;
 import com.teammoeg.steampowered.registrate.SPBlocks;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.celestiacraft.cmi.Cmi;
+import dev.celestiacraft.cmi.api.client.assets.ItemModelGen;
 import dev.celestiacraft.cmi.common.block.fluid_burner.FluidBurnerBlock;
 import dev.celestiacraft.cmi.common.block.fluid_burner.FluidBurnerBlockItem;
 import dev.celestiacraft.cmi.common.block.fluid_burner.bronze.BronzeFluidBurnerBlock;
@@ -28,12 +29,7 @@ public class FluidBurnerBlocks {
 				.tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag)
 				.item(FluidBurnerBlockItem::new)
 				.tag(CmiItemTags.BURNER)
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/fluid_burner/bronze/off")
-					);
-				})
+				.model(ItemModelGen.withModel("block/fluid_burner/bronze/off"))
 				.build()
 				.blockstate(FluidBurnerBlock.genBlockState("bronze"))
 				.register();
@@ -45,12 +41,7 @@ public class FluidBurnerBlocks {
 				.tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag)
 				.item(FluidBurnerBlockItem::new)
 				.tag(CmiItemTags.BURNER)
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/fluid_burner/cast_iron/off")
-					);
-				})
+				.model(ItemModelGen.withModel("block/fluid_burner/cast_iron/off"))
 				.build()
 				.blockstate(FluidBurnerBlock.genBlockState("cast_iron"))
 				.register();
@@ -62,12 +53,7 @@ public class FluidBurnerBlocks {
 				.tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag)
 				.item(FluidBurnerBlockItem::new)
 				.tag(CmiItemTags.BURNER)
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/fluid_burner/steel/off")
-					);
-				})
+				.model(ItemModelGen.withModel("block/fluid_burner/steel/off"))
 				.build()
 				.blockstate(FluidBurnerBlock.genBlockState("steel"))
 				.register();

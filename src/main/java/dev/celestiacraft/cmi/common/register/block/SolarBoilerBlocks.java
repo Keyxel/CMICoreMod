@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.data.TagGen;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.celestiacraft.cmi.Cmi;
+import dev.celestiacraft.cmi.api.client.assets.ItemModelGen;
 import dev.celestiacraft.cmi.common.block.solar_boiler.SolarBoilerBlock;
 import dev.celestiacraft.cmi.common.block.solar_boiler.SolarBoilerItem;
 import dev.celestiacraft.cmi.common.block.solar_boiler.bronze.BronzeSolarBoilerBlock;
@@ -27,12 +28,7 @@ public class SolarBoilerBlocks {
 				.tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag)
 				.item(SolarBoilerItem::new)
 				.tag(CmiItemTags.BURNER)
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/solar_boiler/bronze")
-					);
-				})
+				.model(ItemModelGen.withModel("block/solar_boiler/bronze"))
 				.build()
 				.blockstate(SolarBoilerBlock.genBlockState("bronze"))
 				.register();
@@ -44,12 +40,7 @@ public class SolarBoilerBlocks {
 				.tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag)
 				.item(SolarBoilerItem::new)
 				.tag(CmiItemTags.BURNER)
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/solar_boiler/cast_iron")
-					);
-				})
+				.model(ItemModelGen.withModel("block/solar_boiler/cast_iron"))
 				.build()
 				.blockstate(SolarBoilerBlock.genBlockState("cast_iron"))
 				.register();
@@ -62,12 +53,7 @@ public class SolarBoilerBlocks {
 				.tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag)
 				.item(SolarBoilerItem::new)
 				.tag(CmiItemTags.BURNER)
-				.model((context, provider) -> {
-					provider.withExistingParent(
-							context.getName(),
-							provider.modLoc("block/solar_boiler/steel")
-					);
-				})
+				.model(ItemModelGen.withModel("block/solar_boiler/steel"))
 				.build()
 				.blockstate(SolarBoilerBlock.genBlockState("steel"))
 				.register();
