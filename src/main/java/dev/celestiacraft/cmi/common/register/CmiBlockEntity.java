@@ -35,7 +35,7 @@ import dev.celestiacraft.cmi.common.block.test_coke_oven.TestCokeOvenBlockEntity
 import dev.celestiacraft.cmi.common.block.test_coke_oven.TestCokeOvenIOBlockEntity;
 import dev.celestiacraft.cmi.common.block.test_gravel.TestGravelBlockEntity;
 import dev.celestiacraft.cmi.common.block.test_multiblock.TestMultiblockBlockEntity;
-import dev.celestiacraft.cmi.common.block.void_dust_collector.VoidDustCollectorBlockEnitiy;
+import dev.celestiacraft.cmi.common.block.void_dust_collector.VoidDustCollectorBlockEntity;
 import dev.celestiacraft.cmi.common.block.well.blazing_blood.BlazingBloodWellBlockEntity;
 import dev.celestiacraft.cmi.common.block.well.lava.LavaWellBlockEntity;
 import dev.celestiacraft.cmi.common.block.well.water.WaterWellBlockEntity;
@@ -51,7 +51,7 @@ public class CmiBlockEntity {
 	public static final BlockEntityEntry<SteamHammerBlockEntity> STEAM_HAMMER;
 	public static final BlockEntityEntry<AcceleratorMotorBlockEntity> ACCELERATOR_MOTOR;
 	public static final BlockEntityEntry<AdvancedSpoutBlockEntity> ADVANCED_SPOUT;
-	public static final BlockEntityEntry<VoidDustCollectorBlockEnitiy> VOID_DUST_COLLECTOR;
+	public static final BlockEntityEntry<VoidDustCollectorBlockEntity> VOID_DUST_COLLECTOR;
 	public static final BlockEntityEntry<BeltGrinderBlockEntity> BELT_GRINDER;
 	public static final BlockEntityEntry<TestMultiblockBlockEntity> TEST_MULTIBLOCK;
 	public static final BlockEntityEntry<TestCokeOvenBlockEntity> TEST_COKE_OVEN;
@@ -111,7 +111,7 @@ public class CmiBlockEntity {
 				.renderer(() -> AdvancedSpoutRenderer::new)
 				.register();
 
-		VOID_DUST_COLLECTOR = Cmi.REGISTRATE.blockEntity("void_dust_collector", VoidDustCollectorBlockEnitiy::new)
+		VOID_DUST_COLLECTOR = Cmi.REGISTRATE.blockEntity("void_dust_collector", VoidDustCollectorBlockEntity::new)
 				.validBlock(MachineBlocks.VOID_DUST_COLLECTOR)
 				.register();
 

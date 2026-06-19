@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class VoidDustCollectorBlockEnitiy extends BlockEntity implements IHaveGoggleInformation {
+public class VoidDustCollectorBlockEntity extends BlockEntity implements IHaveGoggleInformation {
 	private static final int CAPACITY = VoidDustCollectorConfig.ENERGY_CAPACITY.get();
 	private static final int MAX_RECEIVE = VoidDustCollectorConfig.MAX_RECEIVE.get();
 	private static final int ENERGY_CONSUMPTION = VoidDustCollectorConfig.ENERGY_CONSUMPTION.get();
@@ -42,11 +42,11 @@ public class VoidDustCollectorBlockEnitiy extends BlockEntity implements IHaveGo
 	private int workTimer = 0;
 	private int workTimeRequired = 0;
 
-	public VoidDustCollectorBlockEnitiy(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+	public VoidDustCollectorBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
 	}
 
-	public static void tick(Level level, BlockPos pos, BlockState state, VoidDustCollectorBlockEnitiy enitiy) {
+	public static void tick(Level level, BlockPos pos, BlockState state, VoidDustCollectorBlockEntity enitiy) {
 		if (level.isClientSide()) {
 			return;
 		}

@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class VoidDustCollectorBlock extends BasicBlock implements IBE<VoidDustCollectorBlockEnitiy> {
+public class VoidDustCollectorBlock extends BasicBlock implements IBE<VoidDustCollectorBlockEntity> {
 	public VoidDustCollectorBlock(Properties properties) {
 		super(Properties.copy(Blocks.IRON_BLOCK)
 				.sound(SoundType.NETHERITE_BLOCK));
@@ -37,17 +37,17 @@ public class VoidDustCollectorBlock extends BasicBlock implements IBE<VoidDustCo
 		return createTickerHelper(
 				type,
 				CmiBlockEntity.VOID_DUST_COLLECTOR.get(),
-				VoidDustCollectorBlockEnitiy::tick
+				VoidDustCollectorBlockEntity::tick
 		);
 	}
 
 	@Override
-	public Class<VoidDustCollectorBlockEnitiy> getBlockEntityClass() {
-		return VoidDustCollectorBlockEnitiy.class;
+	public Class<VoidDustCollectorBlockEntity> getBlockEntityClass() {
+		return VoidDustCollectorBlockEntity.class;
 	}
 
 	@Override
-	public BlockEntityType<? extends VoidDustCollectorBlockEnitiy> getBlockEntityType() {
+	public BlockEntityType<? extends VoidDustCollectorBlockEntity> getBlockEntityType() {
 		return CmiBlockEntity.VOID_DUST_COLLECTOR.get();
 	}
 }
