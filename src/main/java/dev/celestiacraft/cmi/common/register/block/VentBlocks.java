@@ -21,6 +21,7 @@ public class VentBlocks {
 				.tag(Tags.Blocks.NEEDS_WOOD_TOOL)
 				.blockstate(MarsGeothermalVentBlock.genBlockState())
 				.register();
+
 		MERCURY_GEO = Cmi.REGISTRATE.block("mercury_geothermal_vent", MercuryGeothermalVentBlock::new)
 				.item()
 				.model(ItemModelGen.withModel("block/mercury_geothermal_vent"))

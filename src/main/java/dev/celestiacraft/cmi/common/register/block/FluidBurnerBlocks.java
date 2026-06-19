@@ -33,6 +33,7 @@ public class FluidBurnerBlocks {
 				.build()
 				.blockstate(FluidBurnerBlock.genBlockState("bronze"))
 				.register();
+
 		CAST_IRON_FLUID_BURNER = Cmi.REGISTRATE.block("cast_iron_fluid_burner", CastIronFluidBurnerBlock::new)
 				.initialProperties(SPBlocks::hardMetal)
 				.transform(TagGen.pickaxeOnly())
@@ -45,6 +46,7 @@ public class FluidBurnerBlocks {
 				.build()
 				.blockstate(FluidBurnerBlock.genBlockState("cast_iron"))
 				.register();
+
 		STEEL_FLUID_BURNER = Cmi.REGISTRATE.block("steel_fluid_burner", SteelFluidBurnerBlock::new)
 				.initialProperties(SPBlocks::hardMetal)
 				.transform(TagGen.pickaxeOnly())

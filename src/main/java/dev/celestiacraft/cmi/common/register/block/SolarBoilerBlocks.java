@@ -32,6 +32,7 @@ public class SolarBoilerBlocks {
 				.build()
 				.blockstate(SolarBoilerBlock.genBlockState("bronze"))
 				.register();
+
 		CAST_IRON_SOLAR_BOILER = Cmi.REGISTRATE.block("cast_iron_solar_boiler", CastIronSolarBoilerBlock::new)
 				.initialProperties(SharedProperties::softMetal)
 				.transform(TagGen.pickaxeOnly())

@@ -28,6 +28,7 @@ public class WallBlocks {
 				.tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag)
 				.blockstate(WaterWellBlock.genBlockState())
 				.register();
+
 		LAVA_WELL = Cmi.REGISTRATE.block("lava_well", LavaWellBlock::new)
 				.item(LavaWellBlockItem::new)
 				.model(ItemModelGen.withModel("block/well/lava"))
@@ -37,6 +38,7 @@ public class WallBlocks {
 				.tag(AllTags.AllBlockTags.WRENCH_PICKUP.tag)
 				.blockstate(LavaWellBlock.genBlockState())
 				.register();
+
 		BLAZING_BLOOD_WELL = Cmi.REGISTRATE.block("blazing_blood_well", BlazingBloodWellBlock::new)
 				.item(BlazingBloodWellBlockItem::new)
 				.model(ItemModelGen.withModel("block/well/blazing_blood"))
