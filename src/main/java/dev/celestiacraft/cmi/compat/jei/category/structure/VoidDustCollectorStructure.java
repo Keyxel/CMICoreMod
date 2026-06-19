@@ -35,7 +35,7 @@ public class VoidDustCollectorStructure extends AnimatedKinetics {
 		int scale = 23;
 		defaultBlockElement(MachineBlocks.VOID_DUST_COLLECTOR.get().defaultBlockState()
 				.setValue(BasicBlock.LIT, true)
-				.setValue(VoidDustCollectorBlock.FACING, Direction.SOUTH))
+				.setValue(VoidDustCollectorBlock.HORIZONTAL_FACING, Direction.SOUTH))
 				.atLocal(0.0F, 1.0F, 0.0F)
 				.scale(scale)
 				.render(graphics);
