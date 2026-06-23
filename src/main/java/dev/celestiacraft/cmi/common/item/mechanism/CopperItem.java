@@ -2,11 +2,13 @@ package dev.celestiacraft.cmi.common.item.mechanism;
 
 import dev.celestiacraft.cmi.common.item.MechanismItem;
 import dev.celestiacraft.cmi.common.register.block.MachineBlocks;
+import dev.celestiacraft.libs.api.interaction.context.UseContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
@@ -25,22 +27,12 @@ public class CopperItem extends MechanismItem {
 	}
 
 	@Override
-	protected InteractionResult onMechanismUse(UseOnContext context) {
-		Level level = context.getLevel();
-		Player player = context.getPlayer();
-		InteractionHand hand = context.getHand();
-		ItemStack item = context.getItemInHand();
-		BlockPos pos = context.getClickedPos();
-		BlockState state = level.getBlockState(pos);
-		HitResult hitResult = player.pick(5.0d, 0.0f, false);
+	public boolean useAfterConsume() {
+		return false;
+	}
 
-		if (hitResult instanceof BlockHitResult blockHit) {
-			if (state.is(MachineBlocks.ACCELERATOR.get())) {
-				player.swing(hand);
-				return InteractionResult.SUCCESS;
-			}
-		}
-
+	@Override
+	protected InteractionResultHolder<ItemStack> onMechanismUse(Level level, Player player, InteractionHand hand) {
 		ThrownPotion potion = new ThrownPotion(level, player);
 		ItemStack potionStack = Items.SPLASH_POTION.getDefaultInstance();
 
@@ -53,7 +45,7 @@ public class CopperItem extends MechanismItem {
 				player.getYRot(),
 				0.0F,
 				1.0F,
-				1.0F
+				0.0F
 		);
 		level.playSound(
 				null,
@@ -67,6 +59,6 @@ public class CopperItem extends MechanismItem {
 		);
 
 		player.swing(hand);
-		return InteractionResult.SUCCESS;
+		return super.onMechanismUse(level, player, hand);
 	}
 }

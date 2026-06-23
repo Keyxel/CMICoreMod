@@ -30,7 +30,7 @@ public class GoldItem extends MechanismItem {
 	 * @return
 	 */
 	@Override
-	protected InteractionResult onMechanismUse(UseOnContext context) {
+	protected InteractionResult onMechanismUseOn(UseOnContext context) {
 		Player player = context.getPlayer();
 		InteractionHand hand = context.getHand();
 		Level level = context.getLevel();

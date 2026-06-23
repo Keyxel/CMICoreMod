@@ -22,7 +22,7 @@ public class PotionItem extends MechanismItem {
 	}
 
 	@Override
-	protected InteractionResult onMechanismUse(UseOnContext context) {
+	protected InteractionResult onMechanismUseOn(UseOnContext context) {
 		Player player = context.getPlayer();
 		Level level = context.getLevel();
 		ItemStack stack = context.getItemInHand();
