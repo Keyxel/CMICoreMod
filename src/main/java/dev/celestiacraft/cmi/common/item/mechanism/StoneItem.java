@@ -21,7 +21,7 @@ public class StoneItem extends MechanismItem {
 	}
 
 	@Override
-	protected InteractionResult onMechanismUse(UseOnContext context) {
+	protected InteractionResult onMechanismUseOn(UseOnContext context) {
 		Player player = context.getPlayer();
 		InteractionHand hand = context.getHand();
 		BlockPos pos = context.getClickedPos();
