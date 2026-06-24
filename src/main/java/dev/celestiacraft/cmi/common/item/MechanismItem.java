@@ -88,7 +88,7 @@ public abstract class MechanismItem extends BasicItem {
 	 * }
 	 * }</pre>
 	 */
-	protected InteractionResultHolder<ItemStack> onMechanismUse(Level level, Player player, InteractionHand usedHand) {
+	protected InteractionResultHolder<ItemStack> onMechanismUse(Level level, Player player, InteractionHand hand) {
 		return InteractionResultHolder.pass(player.getMainHandItem());
 	}
 
@@ -259,13 +259,13 @@ public abstract class MechanismItem extends BasicItem {
 	 * </p>
 	 */
 	@Override
-	public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand usedHand) {
-		InteractionResultHolder<ItemStack> resultHolder = onMechanismUse(level, player, usedHand);
+	public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+		InteractionResultHolder<ItemStack> resultHolder = onMechanismUse(level, player, hand);
 
 		if (resultHolder.getResult().consumesAction()) {
-			ItemStack stack = player.getItemInHand(usedHand);
+			ItemStack stack = player.getItemInHand(hand);
 
-			handleItemSwing(usedHand, player);
+			handleItemSwing(hand, player);
 			handleCooldown(player, stack);
 			applyConsume(player, stack);
 		}
